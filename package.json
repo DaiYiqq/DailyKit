@@ -1,0 +1,153 @@
+{
+  "name": "dailykit",
+  "version": "1.0.0",
+  "description": "DailyKit 百宝工具箱 —— 跨平台、离线、保护隐私的日常效率工具集合（密码生成、二维码、图片压缩、JSON 格式化、文本对比、时间戳、单位换算、哈希、番茄钟等）",
+  "author": {
+    "name": "戴亿 (Dai Yi)",
+    "email": "daiy91004@gmail.com"
+  },
+  "license": "MIT",
+  "homepage": "https://github.com/DaiYiqq/DailyKit#readme",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/DaiYiqq/DailyKit.git"
+  },
+  "bugs": {
+    "url": "https://github.com/DaiYiqq/DailyKit/issues"
+  },
+  "keywords": [
+    "toolbox",
+    "utilities",
+    "productivity",
+    "electron",
+    "cross-platform",
+    "password-generator",
+    "qrcode",
+    "image-compressor",
+    "offline",
+    "privacy",
+    "工具箱",
+    "效率工具"
+  ],
+  "main": "src/main/main.js",
+  "scripts": {
+    "start": "electron .",
+    "lint": "node scripts/syntax-check.js",
+    "dist": "electron-builder --multiprocess",
+    "dist:win": "electron-builder --win --x64",
+    "dist:mac": "electron-builder --mac",
+    "dist:linux": "electron-builder --linux",
+    "postinstall": "electron-builder install-app-deps"
+  },
+  "dependencies": {
+    "qrcode": "^1.5.4"
+  },
+  "devDependencies": {
+    "electron": "^45.0.0",
+    "electron-builder": "^26.18.0",
+    "png-to-ico": "^3.0.2"
+  },
+  "build": {
+    "appId": "com.daiyi.dailykit",
+    "productName": "DailyKit",
+    "copyright": "Copyright © 2026 戴亿 (Dai Yi)",
+    "artifactName": "DailyKit-${version}-${os}-${arch}.${ext}",
+    "directories": {
+      "output": "release",
+      "buildResources": "build"
+    },
+    "files": [
+      "src/**/*",
+      "!src/**/*.md",
+      "package.json",
+      "LICENSE"
+    ],
+    "asar": true,
+    "win": {
+      "target": [
+        {
+          "target": "nsis",
+          "arch": [
+            "x64"
+          ]
+        }
+      ],
+      "icon": "build/icon.ico"
+    },
+    "nsis": {
+      "oneClick": false,
+      "perMachine": false,
+      "allowElevation": true,
+      "allowToChangeInstallationDirectory": true,
+      "createDesktopShortcut": true,
+      "createStartMenuShortcut": true,
+      "menuCategory": "DailyKit",
+      "shortcutName": "DailyKit",
+      "installerIcon": "build/icon.ico",
+      "uninstallerIcon": "build/icon.ico",
+      "runAfterFinish": true,
+      "deleteAppDataOnUninstall": false,
+      "displayLanguageSelector": true,
+      "installerLanguages": [
+        "zh_CN",
+        "en_US"
+      ]
+    },
+    "mac": {
+      "target": [
+        {
+          "target": "dmg",
+          "arch": [
+            "x64",
+            "arm64"
+          ]
+        },
+        {
+          "target": "zip",
+          "arch": [
+            "x64",
+            "arm64"
+          ]
+        }
+      ],
+      "icon": "build/icon.png",
+      "category": "public.app-category.productivity"
+    },
+    "dmg": {
+      "title": "DailyKit ${version}",
+      "icon": "build/icon.png"
+    },
+    "linux": {
+      "target": [
+        {
+          "target": "AppImage",
+          "arch": [
+            "x64"
+          ]
+        },
+        {
+          "target": "deb",
+          "arch": [
+            "x64"
+          ]
+        },
+        {
+          "target": "rpm",
+          "arch": [
+            "x64"
+          ]
+        }
+      ],
+      "icon": "build/icon.png",
+      "category": "Utility",
+      "maintainer": "戴亿 (Dai Yi) <daiy91004@gmail.com>",
+      "synopsis": "Cross-platform offline daily toolbox"
+    },
+    "publish": {
+      "provider": "github",
+      "owner": "DaiYiqq",
+      "repo": "DailyKit",
+      "releaseType": "release"
+    }
+  }
+}

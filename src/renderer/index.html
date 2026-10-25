@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="Content-Security-Policy"
+        content="default-src 'self'; img-src 'self' data:; style-src 'self' 'unsafe-inline'; script-src 'self'; connect-src 'self';" />
+  <title>DailyKit 百宝工具箱</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div id="app">
+    <!-- 侧边栏 -->
+    <aside id="sidebar">
+      <div class="brand">
+        <div class="brand-logo">🧰</div>
+        <div class="brand-text">
+          <div class="brand-name">DailyKit</div>
+          <div class="brand-sub">百宝工具箱</div>
+        </div>
+      </div>
+
+      <div class="search-box">
+        <input id="toolSearch" type="text" placeholder="搜索工具…" autocomplete="off" />
+      </div>
+
+      <nav id="nav" aria-label="工具导航"></nav>
+
+      <div class="sidebar-footer">
+        <button class="nav-item" data-tool="about" id="aboutNavBtn">
+          <span class="nav-icon">ℹ️</span><span class="nav-label">关于</span>
+        </button>
+        <div class="version-tag" id="versionTag">v1.0.0</div>
+      </div>
+    </aside>
+
+    <!-- 主内容 -->
+    <main id="main">
+      <header id="topbar">
+        <h1 id="pageTitle">首页</h1>
+        <div class="topbar-right">
+          <span class="offline-badge" title="所有工具均离线运行，数据不上传">🔒 离线运行 · 隐私安全</span>
+        </div>
+      </header>
+      <section id="view"></section>
+    </main>
+  </div>
+
+  <!-- 首次启动引导 -->
+  <div id="onboarding" class="onboarding hidden" aria-hidden="true">
+    <div class="onboarding-card">
+      <div class="onboarding-steps" id="obSteps"></div>
+      <div class="onboarding-body" id="obBody"></div>
+      <div class="onboarding-actions">
+        <button class="btn btn-ghost" id="obSkip">跳过</button>
+        <button class="btn btn-primary" id="obNext">下一步</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- toast -->
+  <div id="toast" class="toast hidden"></div>
+
+  <!-- 工具模块（顺序即依赖注册顺序） -->
+  <script src="tools/common.js"></script>
+  <script src="tools/dashboard.js"></script>
+  <script src="tools/password.js"></script>
+  <script src="tools/qrcode.js"></script>
+  <script src="tools/image-compress.js"></script>
+  <script src="tools/json.js"></script>
+  <script src="tools/textdiff.js"></script>
+  <script src="tools/timestamp.js"></script>
+  <script src="tools/unit.js"></script>
+  <script src="tools/color.js"></script>
+  <script src="tools/hash.js"></script>
+  <script src="tools/base64.js"></script>
+  <script src="tools/text-tools.js"></script>
+  <script src="tools/pomodoro.js"></script>
+  <script src="tools/about.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
